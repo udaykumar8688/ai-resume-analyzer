@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Resume</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8fb;
+            color: #222;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .upload-card {
+            background: white;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px 25px;
+            width: 100%;
+            background: #0b5ed7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .errors {
+            margin-top: 18px;
+            color: #b42318;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .back {
+            display: block;
+            margin-top: 20px;
+            color: #0b5ed7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="upload-card">
+        <h1>Upload Resume</h1>
+        <p>Upload your PDF, DOC, or DOCX resume to prepare it for analysis.</p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.file }}
+
+            {% if form.errors %}
+                <div class="errors">
+                    {{ form.file.errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit">Analyze Resume</button>
+        </form>
+
+        <a href="{% url 'home' %}" class="back">&larr; Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
