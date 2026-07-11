@@ -53,8 +53,8 @@ Required production settings:
 ```text
 DJANGO_SECRET_KEY=<generated secret>
 DEBUG=False
-ALLOWED_HOSTS=<your-app-domain>
-CSRF_TRUSTED_ORIGINS=https://<your-app-domain>
+ALLOWED_HOSTS=.onrender.com
+CSRF_TRUSTED_ORIGINS=https://*.onrender.com
 ```
 
 Uploaded files are stored in `media/`. On free hosting, uploaded files may be temporary unless persistent storage is configured.

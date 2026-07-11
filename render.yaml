@@ -11,6 +11,6 @@ services:
       - key: DEBUG
         value: False
       - key: ALLOWED_HOSTS
-        value: ai-resume-analyzer.onrender.com
+        value: .onrender.com
       - key: CSRF_TRUSTED_ORIGINS
-        value: https://ai-resume-analyzer.onrender.com
+        value: https://*.onrender.com
