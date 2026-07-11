@@ -42,3 +42,19 @@ http://127.0.0.1:8000/
 ## Notes
 
 Uploaded resumes, local database files, and virtual environments are intentionally ignored by git.
+
+
+## Deployment
+
+This project is ready for a Render web service. The included `render.yaml` sets the build command, start command, and required environment variables.
+
+Required production settings:
+
+```text
+DJANGO_SECRET_KEY=<generated secret>
+DEBUG=False
+ALLOWED_HOSTS=<your-app-domain>
+CSRF_TRUSTED_ORIGINS=https://<your-app-domain>
+```
+
+Uploaded files are stored in `media/`. On free hosting, uploaded files may be temporary unless persistent storage is configured.

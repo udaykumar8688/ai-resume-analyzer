@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-resume-analyzer
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn resume_analyzer.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: ai-resume-analyzer.onrender.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://ai-resume-analyzer.onrender.com
